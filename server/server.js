@@ -10,11 +10,11 @@ const io = new Server(server);
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Serve separate pages
-app.get('/posts.html', (req, res) => {
+app.get('/posts', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/posts.html'));
 });
 
-app.get('/chat.html', (req, res) => {
+app.get('/chat', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/chat.html'));
 });
 
