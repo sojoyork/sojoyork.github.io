@@ -8,3 +8,14 @@ document.getElementById('hogwartsForm').addEventListener('submit', function (eve
         document.getElementById('result').textContent = 'Incorrect! Try again.';
     }
 });
+
+document.getElementById('cmdForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const cmd = document.getElementById('cmdInput').value.toLowerCase();
+
+    if (cmd === 'ls' || cmd === 'cat flag.txt') {
+        document.getElementById('cmdResult').textContent = 'flag{command_injection_found}';
+    } else {
+        document.getElementById('cmdResult').textContent = 'Unknown command.';
+    }
+});
