@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Injection Challenge - h@ck1t.hack</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Command Injection Challenge</h1>
+    </header>
+    <main>
+        <p>Use <code>/?cmd=your_command</code> in the URL to find the flag!</p>
+        <form id="cmdForm">
+            <input type="text" id="cmdInput" placeholder="Enter command" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="cmdResult"></p>
+    </main>
+</body>
+</html>
