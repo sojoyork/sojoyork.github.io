@@ -1,0 +1,11 @@
+h@ck1t.hack/
+│
+├── css/
+│   └── styles.css        # CSS for styling
+├── js/
+│   └── main.js           # JavaScript for interactive elements
+├── index.html            # Home page and challenge links
+├── hogwarts.html         # Hogwarts challenge
+├── command_injection.html# Command injection challenge
+├── sweetrice.html        # Sweetrice challenge
+└── leaderboard.html      # Optional leaderboard (manual tracking)
