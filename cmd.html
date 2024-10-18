@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Execution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+        #output {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            white-space: pre-wrap; /* Maintain whitespace */
+        }
+    </style>
+</head>
+<body>
+    <h1>Command Execution</h1>
+    <p>Type your command below:</p>
+    <form id="cmd-form" onsubmit="executeCommand(event)">
+        <textarea id="command" placeholder="Enter your command here..."></textarea><br>
+        <button type="submit">Execute</button>
+    </form>
+
+    <h2>Output:</h2>
+    <div id="output"></div>
+
+    <script>
+        function executeCommand(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const command = document.getElementById('command').value;
+            const output = document.getElementById('output');
+
+            // Simulate command execution
+            if (command) {
+                output.textContent = `Executed: ${command}\nOutput: (Simulated output for '${command}')`;
+            } else {
+                output.textContent = 'No command provided.';
+            }
+        }
+    </script>
+</body>
+</html>
