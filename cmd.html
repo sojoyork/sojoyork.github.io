@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Command Execution</title>
+    <title>Real Web Shell</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,20 +11,22 @@
             margin: 0;
             padding: 20px;
         }
-        textarea {
-            width: 100%;
-            height: 200px;
-        }
         #output {
             background-color: #fff;
             border: 1px solid #ccc;
             padding: 10px;
             white-space: pre-wrap; /* Maintain whitespace */
+            height: 300px;
+            overflow-y: auto; /* Scroll if output exceeds */
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
         }
     </style>
 </head>
 <body>
-    <h1>Command Execution</h1>
+    <h1>JavaScript Web Shell</h1>
     <p>Type your command below:</p>
     <form id="cmd-form" onsubmit="executeCommand(event)">
         <textarea id="command" placeholder="Enter your command here..."></textarea><br>
@@ -43,9 +45,31 @@
 
             // Simulate command execution
             if (command) {
-                output.textContent = `Executed: ${command}\nOutput: (Simulated output for '${command}')`;
+                // Here you can simulate different outputs based on the command
+                output.textContent += `> ${command}\n`;
+                
+                // Add more simulated responses for common commands
+                switch (command.trim().toLowerCase()) {
+                    case 'ls':
+                        output.textContent += 'file1.txt\nfile2.txt\nfolder1/\n';
+                        break;
+                    case 'pwd':
+                        output.textContent += '/home/user/\n';
+                        break;
+                    case 'whoami':
+                        output.textContent += 'user\n';
+                        break;
+                    case 'date':
+                        output.textContent += new Date().toString() + '\n';
+                        break;
+                    default:
+                        output.textContent += `Command not found: ${command}\n`;
+                }
+
+                // Auto-scroll output
+                output.scrollTop = output.scrollHeight;
             } else {
-                output.textContent = 'No command provided.';
+                output.textContent += 'No command provided.\n';
             }
         }
     </script>
