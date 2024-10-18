@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerable Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to My Vulnerable Website</h1>
+
+    <h2>Submit your username:</h2>
+    <form method="GET" action="welcome.html">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <h2>Execute Your JavaScript Code</h2>
+    <form id="js-shell-form" onsubmit="executeJS(event)">
+        <textarea id="js-code" rows="5" cols="50" placeholder="Enter your JavaScript code here..."></textarea><br>
+        <button type="submit">Execute</button>
+    </form>
+
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+
+    <script>
+        // XSS Vulnerability
+        const params = new URLSearchParams(window.location.search);
+        const username = params.get('username');
+        if (username) {
+            document.getElementById('result').innerHTML = `<p>Hello, ${username}!</p>`;
+        }
+
+        function executeJS(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const code = document.getElementById('js-code').value;
+            const output = document.getElementById('output');
+
+            try {
+                const result = eval(code); // Execute the JavaScript code
+                output.textContent = result; // Display the output
+            } catch (e) {
+                output.textContent = 'Error: ' + e.message; // Display any errors
+            }
+        }
+    </script>
+</body>
+</html>
