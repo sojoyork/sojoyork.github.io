@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <p>You can also try SQL Injection here:</p>
+    <form method="GET" action="#">
+        <label for="query">SQL Query:</label>
+        <input type="text" id="query" name="query">
+        <button type="submit">Execute</button>
+    </form>
+    <div id="sqlResult"></div>
+
+    <script>
+        // Simulated SQL injection
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get('query');
+        if (query) {
+            document.getElementById('sqlResult').innerHTML = `<p>Simulated SQL Result for: ${query}</p>`;
+        }
+    </script>
+</body>
+</html>
