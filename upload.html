@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Web Shell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Web Shell</h1>
+
+    <h2>Execute Your JavaScript Code</h2>
+    <form id="js-shell-form" onsubmit="executeJS(event)">
+        <textarea id="js-code" rows="5" cols="50" placeholder="Enter your JavaScript code here..."></textarea><br>
+        <button type="submit">Execute</button>
+    </form>
+
+    <h2>Output:</h2>
+    <pre id="output"></pre>
+
+    <script>
+        function executeJS(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const code = document.getElementById('js-code').value;
+            const output = document.getElementById('output');
+
+            try {
+                const result = eval(code); // Execute the JavaScript code
+                output.textContent = result; // Display the output
+            } catch (e) {
+                output.textContent = 'Error: ' + e.message; // Display any errors
+            }
+        }
+    </script>
+</body>
+</html>
